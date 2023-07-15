@@ -6,9 +6,9 @@ const userSchema = new mongoose.Schema({
     required: [true, '名前を入力してください'],
     unique: true,
   },
-  email: {
+  password: {
     type: String,
-    required: [true, 'メールアドレスを入力してください'],
+    required: [true, 'パスワードを入力してください'],
   },
 });
 
