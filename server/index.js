@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const PORT = 5000;
+require('dotenv').config();
 
 // MongoDB
 // ユーザー：codinobaggio10
@@ -9,10 +10,7 @@ const PORT = 5000;
 
 // DB接続
 try {
-  mongoose.connect(
-    'mongodb+srv://codinobaggio10:_XW5eE#*Dpk5UEb@cluster0.ulwo753.mongodb.net/?retryWrites=true&w=majority',
-    {}
-  );
+  mongoose.connect(process.env.MONGODB_URL, {});
 } catch (error) {
   console.log(error);
 }
