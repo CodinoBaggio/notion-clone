@@ -4,7 +4,7 @@ const { body } = require('express-validator');
 const User = require('../models/user');
 const validation = require('../handlers/validation');
 const userController = require('../controllers/user');
-// const tokenHandler = require('../handlers/tokenHandler');
+const tokenHandler = require('../handlers/tokenHandler');
 
 //ユーザー新規登録用API
 router.post(
@@ -42,9 +42,9 @@ router.post(
   userController.login
 );
 
-// //トークン認証API(ここが上手く叩けてない)
-// router.post('/verify-token', tokenHandler.verifyToken, (req, res) => {
-//   res.status(200).json({ user: req.user });
-// });
+//トークン認証API(ここが上手く叩けてない)
+router.post('/verify-token', tokenHandler.verifyToken, (req, res) => {
+  res.status(200).json({ user: req.user });
+});
 
 module.exports = router;
