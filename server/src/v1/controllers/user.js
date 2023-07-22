@@ -29,7 +29,6 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   //ユーザーがログインするときに打ち込むそのままの文字列を取得。
   const { username, password } = req.body;
-
   try {
     //DBからユーザーが存在するか探してくる。
     const user = await User.findOne({ username }).select('password username');
@@ -49,9 +48,8 @@ exports.login = async (req, res) => {
       user.password,
       process.env.PASS_SK
     ).toString(CryptoJS.enc.Utf8);
-
     //パスワード適合チェック
-    if (decryptedPassword !== password) {
+    if (decryptedPassword !== password.toString()) {
       return res.status(401).json({
         errors: [
           {
