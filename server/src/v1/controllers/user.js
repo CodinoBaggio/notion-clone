@@ -37,8 +37,8 @@ exports.login = async (req, res) => {
       return res.status(401).json({
         errors: [
           {
-            param: 'username',
-            msg: 'ユーザー名かパスワードが無効です。',
+            path: 'username',
+            msg: 'ユーザー名が無効です。',
           },
         ],
       });
@@ -53,8 +53,8 @@ exports.login = async (req, res) => {
       return res.status(401).json({
         errors: [
           {
-            param: 'username',
-            msg: 'ユーザー名かパスワードが無効です。',
+            path: 'password',
+            msg: 'パスワードが無効です。',
           },
         ],
       });
